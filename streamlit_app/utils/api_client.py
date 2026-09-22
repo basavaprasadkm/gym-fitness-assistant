@@ -16,11 +16,16 @@ def _get_api_url():
     # falling back to a real env var for local runs via .env.
     try:
         return st.secrets["API_URL"]
-    except (KeyError, FileNotFoundError):
+    except Exception:
         return os.getenv("API_URL", "http://localhost:8000")
 
 
 API_URL = _get_api_url()
+API_URL = _get_api_url()
+
+# TEMPORARY DEBUG - remove once this is confirmed working
+import streamlit as _st_debug
+_st_debug.sidebar.caption(f"🔧 API_URL: {API_URL}")
 def _headers():
     token = st.session_state.get("token")
     return {"Authorization": f"Bearer {token}"} if token else {}
