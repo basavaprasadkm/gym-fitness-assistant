@@ -1,0 +1,98 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.9rem 1.5rem;
+  background: var(--surface);
+  border-bottom: 1px solid #334155;
+  flex-wrap: wrap;
+}
+.navbar .brand { font-weight: 700; font-size: 1.1rem; }
+.navbar .nav-links { display: flex; gap: 1rem; flex-wrap: wrap; flex: 1; }
+.navbar .nav-links a { color: var(--muted); font-size: 0.9rem; }
+.navbar .nav-links a:hover { color: var(--primary); }
+.navbar .logout-btn { padding: 0.4rem 0.8rem; }
+
+.content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+.dashboard h1 { margin-bottom: 0.2rem; }
+.dashboard > p { color: var(--muted); margin-top: 0; }
+.module-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.module-card {
+  background: var(--surface);
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 1.1rem;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.module-card:hover { border-color: var(--primary); transform: translateY(-2px); }
+.module-card h3 { margin: 0 0 0.4rem; color: var(--text); font-size: 1rem; }
+.module-card p { margin: 0; color: var(--muted); font-size: 0.85rem; }
+
+.auth-card {
+  max-width: 380px;
+  margin: 4rem auto;
+  background: var(--surface);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid #334155;
+}
+.auth-card form { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1rem; }
+.auth-card p { margin-top: 1rem; text-align: center; color: var(--muted); }
+
+.page h2 { margin-bottom: 0.2rem; }
+.muted { color: var(--muted); font-size: 0.9rem; }
+.error { color: var(--danger); }
+
+.grid-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.7rem;
+  margin: 1.2rem 0;
+}
+.grid-form button { grid-column: 1 / -1; }
+
+.result-card {
+  background: var(--surface);
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 1.2rem;
+  margin-top: 1.2rem;
+}
+.result-card h3, .result-card h4 { margin-top: 0; }
+.grocery-list { columns: 2; }
+
+.workout-controls { display: flex; gap: 1rem; align-items: center; margin: 1rem 0; flex-wrap: wrap; }
+
+.video-wrap { position: relative; width: fit-content; }
+.pose-canvas { width: 100%; max-width: 640px; border-radius: 12px; border: 1px solid #334155; background: #000; }
+
+.live-stats { display: flex; gap: 1.5rem; margin-top: 0.8rem; font-size: 0.95rem; }
+.live-stats .warn { color: #fbbf24; }
+
+.chat-window {
+  background: var(--surface);
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 1rem;
+  height: 360px;
+  overflow-y: auto;
+  margin-top: 1rem;
+}
+.chat-turn { margin-bottom: 0.8rem; }
+.chat-bubble { padding: 0.5rem 0.8rem; border-radius: 10px; max-width: 80%; margin: 0.2rem 0; font-size: 0.92rem; }
+.chat-bubble.user { background: var(--primary); color: #062e16; margin-left: auto; text-align: right; }
+.chat-bubble.bot { background: var(--surface-2); }
+.mood-tag { color: var(--muted); font-size: 0.75rem; }
+.chat-input { display: flex; gap: 0.6rem; margin-top: 0.8rem; }
+.chat-input input { flex: 1; }
+
+.nudge { font-style: italic; }
+.score { font-size: 1.1rem; }
+
+.gym-list { display: flex; flex-direction: column; gap: 0.8rem; }
