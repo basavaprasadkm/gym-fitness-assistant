@@ -9,9 +9,18 @@ import os
 import requests
 import streamlit as st
 
-API_URL = os.getenv("API_URL", "http://localhost:8000")
+
+def _get_api_url():
+    # Streamlit Community Cloud's "Secrets" aren't exposed as OS env vars -
+    # only through st.secrets. Check that first (covers the deployed app),
+    # falling back to a real env var for local runs via .env.
+    try:
+        return st.secrets["API_URL"]
+    except (KeyError, FileNotFoundError):
+        return os.getenv("API_URL", "http://localhost:8000")
 
 
+API_URL = _get_api_url()
 def _headers():
     token = st.session_state.get("token")
     return {"Authorization": f"Bearer {token}"} if token else {}
