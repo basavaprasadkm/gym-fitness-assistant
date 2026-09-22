@@ -21,11 +21,7 @@ def _get_api_url():
 
 
 API_URL = _get_api_url()
-API_URL = _get_api_url()
 
-# TEMPORARY DEBUG - remove once this is confirmed working
-import streamlit as _st_debug
-_st_debug.sidebar.caption(f"🔧 API_URL: {API_URL}")
 def _headers():
     token = st.session_state.get("token")
     return {"Authorization": f"Bearer {token}"} if token else {}
