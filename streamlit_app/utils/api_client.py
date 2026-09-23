@@ -29,13 +29,25 @@ def _headers():
 
 def _request(method: str, path: str, **kwargs):
     try:
-        resp = requests.request(method, f"{API_URL}{path}", timeout=15, **kwargs)
+        resp = requests.request(
+            method,
+            f"{API_URL}{path}",
+            timeout=60,
+            **kwargs
+        )
+
     except requests.exceptions.ConnectionError as e:
         raise RuntimeError(
-            f"Can't reach the backend at {API_URL}. Is it running? (uvicorn app.main:app --reload)"
+            f"Can't reach the backend at {API_URL}. "
+            f"Is it running?"
         ) from e
+
     except requests.exceptions.Timeout as e:
-        raise RuntimeError("The backend took too long to respond.") from e
+        raise RuntimeError(
+            f"The backend did not respond within 60 seconds. "
+            f"Backend: {API_URL}"
+        ) from e
+
     except requests.exceptions.RequestException as e:
         raise RuntimeError(str(e)) from e
 
@@ -44,9 +56,10 @@ def _request(method: str, path: str, **kwargs):
             detail = resp.json().get("detail", resp.text)
         except Exception:
             detail = resp.text
-        raise RuntimeError(detail)
-    return resp.json() if resp.content else None
 
+        raise RuntimeError(detail)
+
+    return resp.json() if resp.content else None
 
 # ---------- Auth ----------
 def register(payload: dict):
